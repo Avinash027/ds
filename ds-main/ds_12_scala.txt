@@ -1,0 +1,51 @@
+ 1. Update and Install Java + Scala
+
+sudo apt update
+sudo apt install openjdk-11-jdk scala -y
+
+2. Download and Set Up Apache Spark
+
+wget https://dlcdn.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz
+
+tar xvf spark-3.5.1-bin-hadoop3.tgz
+
+sudo mv spark-3.5.1-bin-hadoop3 /opt/spark
+
+3. Set Environment Variables
+
+gedit ~/.bashrc
+Add this two line at  bottom of above file
+export SPARK_HOME=/opt/spark
+export PATH=$SPARK_HOME/bin:$PATH
+
+ 6. Apply the changes to current terminal session
+source ~/.bashrc
+
+ 7. Create Your Scala Spark Program(TERMINAL)
+gedit HelloSpark.scala
+
+CODE:SAVE AS HelloSpark.scala
+import org.apache.spark.sql.SparkSession
+
+object HelloSpark {
+  def main(args: Array[String]): Unit = {
+    val spark = SparkSession.builder
+      .appName("HelloSpark")
+      .master("local[*]")
+      .getOrCreate()
+
+    println("Hello, Spark World!")
+
+    spark.stop()
+  }
+}
+
+ 8. Navigate to the file location
+cd ~/Documents
+
+ 9. Compile the Scala Program
+scalac -classpath "$SPARK_HOME/jars/*" HelloSpark.scala
+
+10. Run the Program
+scala -classpath ".:$SPARK_HOME/jars/*" HelloSpark
+

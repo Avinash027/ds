@@ -1,0 +1,22 @@
+1.Comannds :
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+java -version
+sudo apt install scala -y
+
+
+2.code : 
+In the txt file : save as HelloWorld.scala
+
+object HelloWorld {
+  def main(args: Array[String]){
+    println("Hello World!")
+  }
+}
+
+
+3. Run the code 
+ Go to the directory suppose home and go to three dots go to the terminal and type command
+cd Desktop anything
+1 scalac Helloworld.scala
+2. scala HelloWorld
